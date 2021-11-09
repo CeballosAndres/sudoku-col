@@ -15,6 +15,9 @@ class Sudoku:
     def dump(self):
         return [[val if val != '' else 1 for val in row] for row in self.sudoku] 
 
+    def backtraking():
+        pass
+
 if __name__ == "__main__":
     example = [
         [3, 9, -1,   -1, 5, -1,   -1, -1, -1],
