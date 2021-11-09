@@ -1,4 +1,3 @@
-
 function resolve(sudoku_input) {
   $.ajax({
           data: {
