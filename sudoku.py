@@ -1,20 +1,19 @@
-
+import numpy as np
 
 class Sudoku:
 
     def __init__(self, sudoku=None):
         if sudoku == None:
             raise NameError('Sudoku is empty')
-
-        self.sudoku = eval(sudoku)
-
-
+        sudoku_array = sudoku.split(',')
+        self.sudoku = np.reshape(sudoku_array, (9,9))
+         
     def print(self):
         print('\n'.join([''.join(['{:3}'.format(item) for item in row]) for row in
             self.sudoku]))
 
     def dump(self):
-        return [[val if val != -1 else 1 for val in row] for row in self.sudoku] 
+        return [[val if val != '' else 1 for val in row] for row in self.sudoku] 
 
 if __name__ == "__main__":
     example = [
