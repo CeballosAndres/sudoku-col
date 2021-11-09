@@ -6,6 +6,11 @@ function onlyNumberKey(evt) {
   return true;
 }
 
+//para mostrar el algoritmo seleccionado en el dropmenu
+$('.dropdown-menu a').click(function(){
+  $('#selected').text($(this).text());
+})
+
 function numbers(){
   let numbers_matrix = '';
   for(let i = 0; i <= 80; i++){

@@ -4,7 +4,7 @@
 
 table {
     border: 3px solid #0c0d53;
-    margin: 50px auto 50px auto;
+    margin: 30px auto 0 auto;
 }
 
 td {
@@ -36,3 +36,4 @@ input:disabled { /*En caso de marcar alguna casilla como "disable" */
 #cell-54, #cell-55, #cell-56, #cell-63, #cell-64, #cell-65, #cell-72, #cell-73, #cell-74,
 #cell-60, #cell-61, #cell-62, #cell-69, #cell-70, #cell-71, #cell-78, #cell-79, #cell-80
  {background-color: #e0e0e0;}
+
