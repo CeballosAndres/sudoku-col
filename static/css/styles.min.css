@@ -37,3 +37,16 @@ input:disabled { /*En caso de marcar alguna casilla como "disable" */
 #cell-60, #cell-61, #cell-62, #cell-69, #cell-70, #cell-71, #cell-78, #cell-79, #cell-80
  {background-color: #e0e0e0;}
 
+#logo-tecnm{
+    height: 60px; 
+    width: 122px;
+    position: absolute;
+    left: 70px;
+}
+#logo-itcolima{
+    height:50px; 
+    width: 50px;
+    margin-top: 7px;
+    position: absolute;
+    right: 80px;
+}
