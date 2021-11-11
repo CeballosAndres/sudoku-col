@@ -1,5 +1,5 @@
 import numpy as np
-
+import time
 class Sudoku:
 
     def __init__(self, sudoku=None):
@@ -12,11 +12,13 @@ class Sudoku:
         print('\n'.join([''.join(['{:3}'.format(item) for item in row]) for row in
             self.sudoku]))
 
-    def dump(self):
-        return [[val if val != '' else 1 for val in row] for row in self.sudoku] 
+    def dfs(self):
+        time.sleep(1)
+        return [[val if val != '' else 'd' for val in row] for row in self.sudoku] 
 
-    def backtraking():
-        pass
+    def backtracking(self):
+        time.sleep(2)
+        return [[val if val != '' else 'b' for val in row] for row in self.sudoku] 
 
 if __name__ == "__main__":
     example = [

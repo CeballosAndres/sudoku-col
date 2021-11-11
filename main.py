@@ -1,5 +1,6 @@
 from flask import Flask, json, render_template, request, jsonify, redirect
 from sudoku import Sudoku
+import time
 
 app = Flask(__name__)
 
@@ -16,11 +17,21 @@ def index():
 @app.route('/resolve', methods=['POST'])
 def resolve():
     sudoku_algorithm = request.form['sudoku_algorithm']
+    if sudoku_algorithm == '' or sudoku_algorithm == 'elija algoritmo':
+        return jsonify({'status': 'error', 'type': 'Algoritmo no seleccionado'})
     sudoku_input = request.form['sudoku_input']
     sudoku = Sudoku(sudoku_input)
-    if sudoku_algorithm == 'dump':
-        response = sudoku.dump()
-    return jsonify({'status': 'ok', 'body': response})
+    # Medición del tiempo que le toma al algoritmo resolver el problema
+    start = time.time()
+    # Resolución con diferentes algoritmos
+    if sudoku_algorithm == 'profundidad':
+        response = sudoku.dfs()
+    elif sudoku_algorithm == 'backtracking':
+        response = sudoku.backtracking()
+    time_of_resolution = time.time() - start
+
+    return jsonify({'status': 'ok', 'body': response, 'time': time_of_resolution})
+
     
    
 
