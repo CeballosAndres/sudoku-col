@@ -6,14 +6,12 @@ class Sudoku:
         if sudoku == None:
             raise NameError('Sudoku is empty')
         sudoku_array = sudoku.split(',')
+        sudoku_array=[[int(val) if val != '' else 0 for val in row] for row in sudoku_array]
         self.sudoku = np.reshape(sudoku_array, (9,9))
-         
-    def print(self):
-        print('\n'.join([''.join(['{:3}'.format(item) for item in row]) for row in
-            self.sudoku]))
 
     def dfs(self):
         time.sleep(1)
+        print(self.sudoku)
         return [[val if val != '' else 'd' for val in row] for row in self.sudoku] 
 
     def backtracking(self):
