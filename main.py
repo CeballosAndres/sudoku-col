@@ -17,7 +17,7 @@ def index():
 @app.route('/resolve', methods=['POST'])
 def resolve():
     sudoku_algorithm = request.form['sudoku_algorithm']
-    if sudoku_algorithm == '' or sudoku_algorithm == 'elija algoritmo':
+    if sudoku_algorithm not in ['profundidad', 'backtracking']:
         return jsonify({'status': 'error', 'type': 'Algoritmo no seleccionado'})
     sudoku_input = request.form['sudoku_input']
     sudoku = Sudoku(sudoku_input)
@@ -31,7 +31,3 @@ def resolve():
     time_of_resolution = time.time() - start
 
     return jsonify({'status': 'ok', 'body': response, 'time': time_of_resolution})
-
-    
-   
-

@@ -1,5 +1,6 @@
 import numpy as np
 import time
+
 class Sudoku:
 
     def __init__(self, sudoku=None):
