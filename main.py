@@ -1,5 +1,6 @@
 from flask import Flask, json, render_template, request, jsonify, redirect
 from sudoku import Sudoku
+import numpy as np
 import time
 
 app = Flask(__name__)
@@ -29,5 +30,9 @@ def resolve():
     elif sudoku_algorithm == 'backtracking':
         response = sudoku.backtracking()
     time_of_resolution = time.time() - start
+    
+    if type(response) is not list:
+        response = response.tolist()
 
+    print(response)
     return jsonify({'status': 'ok', 'body': response, 'time': time_of_resolution})

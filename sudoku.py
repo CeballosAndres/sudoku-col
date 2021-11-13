@@ -1,5 +1,7 @@
 import numpy as np
 import time
+from DFS import *
+from random import randint
 
 class Sudoku:
 
@@ -7,17 +9,17 @@ class Sudoku:
         if sudoku == None:
             raise NameError('Sudoku is empty')
         sudoku_array = sudoku.split(',')
-        sudoku_array=[[int(val) if val != '' else 0 for val in row] for row in sudoku_array]
-        self.sudoku = np.reshape(sudoku_array, (9,9))
+        np_sudoku = np.array(sudoku_array)
+        np_sudoku[np_sudoku==''] = '0'
+        int_sudoku = np_sudoku.astype('int64').reshape((9,9))
+        self.sudoku = int_sudoku
 
     def dfs(self):
-        time.sleep(1)
-        print(self.sudoku)
-        return [[val if val != '' else 'd' for val in row] for row in self.sudoku] 
+        return DFSAlgoritmo(self.sudoku)
 
     def backtracking(self):
         time.sleep(2)
-        return [[val if val != '' else 'b' for val in row] for row in self.sudoku] 
+        return [[val if val != 0 else randint(1,9) for val in row] for row in self.sudoku] 
 
 if __name__ == "__main__":
     example = [

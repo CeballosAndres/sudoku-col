@@ -67,25 +67,20 @@ def DFS_solve(s, row, col):
         return False
     return DFS_solve(s, row, col+1)
 
-def DFSAlgoritmo():
-    #Arreglo con el sudoku sin resolver
-    s=[[0,3,7,0,8,0,2,6,4],[0,9,5,0,2,0,0,0,3],[0,0,0,6,0,0,0,0,9],
-     [5,0,9,0,0,7,0,2,1],[2,0,6,0,1,0,0,3,0],[3,0,0,9,4,0,0,0,6],
-     [0,0,0,7,3,0,1,4,2],[0,0,3,0,0,4,0,0,8],[0,0,0,0,0,8,3,0,5]]
-
+def DFSAlgoritmo(s):
     if len(s) == 9:
-        #Impresion de Sudoku sin resolver
-        print(s)
+        
         #Resolucion
         initial_try(s)
         for line in s:
             if 0 in line:
                 DFS_solve(s, 0, 0)
                 break
-        #Impresion sudoku resuelto
-        print(s)
-        #Limpieza de arreglo del sudoku
-        s = []
+        return s
 
 if __name__ == "__main__":
     DFSAlgoritmo()
+    #Arreglo con el sudoku sin resolver
+    s=[[0,3,7,0,8,0,2,6,4],[0,9,5,0,2,0,0,0,3],[0,0,0,6,0,0,0,0,9],
+     [5,0,9,0,0,7,0,2,1],[2,0,6,0,1,0,0,3,0],[3,0,0,9,4,0,0,0,6],
+     [0,0,0,7,3,0,1,4,2],[0,0,3,0,0,4,0,0,8],[0,0,0,0,0,8,3,0,5]]
