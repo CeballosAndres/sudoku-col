@@ -17,22 +17,31 @@ def index():
 
 @app.route('/resolve', methods=['POST'])
 def resolve():
+    # Obtener nombre del algoritmo a resolver
     sudoku_algorithm = request.form['sudoku_algorithm']
-    if sudoku_algorithm not in ['profundidad', 'backtracking']:
+    if sudoku_algorithm not in ['profundidad', 'backtracking','genetico']:
         return jsonify({'status': 'error', 'type': 'Algoritmo no seleccionado'})
+    # Obtener entrada de sudoku: "1,2,3,4,5,6,7,..."
     sudoku_input = request.form['sudoku_input']
-    sudoku = Sudoku(sudoku_input)
-    # Medición del tiempo que le toma al algoritmo resolver el problema
-    start = time.time()
-    # Resolución con diferentes algoritmos
-    if sudoku_algorithm == 'profundidad':
-        response = sudoku.dfs()
-    elif sudoku_algorithm == 'backtracking':
-        response = sudoku.backtracking()
-    time_of_resolution = time.time() - start
-    
-    if type(response) is not list:
-        response = response.tolist()
+    try:
+        # Instanciar clase sudoku
+        sudoku = Sudoku(sudoku_input)
+        print(sudoku_input)
+        # Medición del tiempo que le toma al algoritmo resolver el problema
+        start = time.time()
+        # Resolución con diferentes algoritmos
+        if sudoku_algorithm == 'profundidad':
+            response = sudoku.dfs()
+        elif sudoku_algorithm == 'backtracking':
+            response = sudoku.backtracking()
+        elif sudoku_algorithm == 'genetico':
+            response = sudoku.genetic()
+        time_of_resolution = time.time() - start
+        
+        # Permitir serializar a json en caso de ser objeto numpy
+        if type(response) is not list:
+            response = response.tolist()
 
-    print(response)
-    return jsonify({'status': 'ok', 'body': response, 'time': time_of_resolution})
+        return jsonify({'status': 'ok', 'body': response, 'time': time_of_resolution})
+    except:
+        return jsonify({'status': 'error', 'type': 'Error al resolver Sudoku'})
