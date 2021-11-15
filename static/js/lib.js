@@ -6,7 +6,7 @@ function onlyNumberKey(evt) {
   return true;
 }
 
-//para mostrar el algoritmo seleccionado en el dropmenu
+// Para mostrar el algoritmo seleccionado en el dropmenu
 $('.dropdown-menu a').click(function(){
   $('#selected').text($(this).text());
 })

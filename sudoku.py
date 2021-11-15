@@ -1,6 +1,7 @@
 import numpy as np
 import time
 from DFS import *
+from backtracking import *
 from random import randint
 
 class Sudoku:
@@ -18,8 +19,7 @@ class Sudoku:
         return DFSAlgoritmo(self.sudoku)
 
     def backtracking(self):
-        time.sleep(2)
-        return [[val if val != 0 else randint(1,9) for val in row] for row in self.sudoku] 
+        return resolve_backtracking(self.sudoku)
 
     def genetic(self):
         raise NameError('Error in sudoku resolution')
