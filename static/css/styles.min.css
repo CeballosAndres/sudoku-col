@@ -67,7 +67,7 @@ nav {
     background-image: url('https://mdbcdn.b-cdn.net/img/svg/hamburger3.svg?color=00FBD8');
 }
 
-.div-historial{
+.history-div{
     background: #e0e0e0;
     width: 30%;
     height: 870px;
@@ -80,7 +80,7 @@ nav {
 /* dont show historial and simple block... just to avoid responsive problems jeje*/
 @media (max-width: 640px) 
 {
-    .div-historial, .simple-block
+    .history-div, .simple-block
     {
         display: none;
     }

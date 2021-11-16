@@ -71,7 +71,7 @@ function clean(){
 
 //funcion para mostrar historial
 function showHistorial() {
-  var x = document.getElementById("historial");
+  var x = document.getElementById("history");
   if (x.style.visibility === "hidden") {
     x.style.visibility = "visible";
   } else {
