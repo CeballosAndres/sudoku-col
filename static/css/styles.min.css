@@ -50,3 +50,38 @@ input:disabled { /*En caso de marcar alguna casilla como "disable" */
     position: absolute;
     right: 80px;
 }
+
+.content{
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    flex-flow: row wrap;
+    height: auto;
+}
+/*take all the row*/
+nav {
+    flex: 100%;
+}
+/*nvabar icon */
+.navbar .navbar-toggler-icon {
+    background-image: url('https://mdbcdn.b-cdn.net/img/svg/hamburger3.svg?color=00FBD8');
+}
+
+.div-historial{
+    background: #e0e0e0;
+    width: 30%;
+    height: 870px;
+    visibility: hidden;
+}
+.simple-block{
+    width: 30%;
+    visibility: hidden;
+}
+/* dont show historial and simple block... just to avoid responsive problems jeje*/
+@media (max-width: 640px) 
+{
+    .div-historial, .simple-block
+    {
+        display: none;
+    }
+}

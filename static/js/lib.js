@@ -68,3 +68,13 @@ function resolve() {
 function clean(){
     $("input").val('');
 }
+
+//funcion para mostrar historial
+function showHistorial() {
+  var x = document.getElementById("historial");
+  if (x.style.visibility === "hidden") {
+    x.style.visibility = "visible";
+  } else {
+    x.style.visibility = "hidden";
+  }
+} 
