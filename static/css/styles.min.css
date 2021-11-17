@@ -70,7 +70,7 @@ nav {
 .history-div{
     background: #e0e0e0;
     width: 30%;
-    height: 870px;
+    min-height: 870px;
     visibility: hidden;
 }
 .simple-block{
@@ -84,4 +84,9 @@ nav {
     {
         display: none;
     }
+}
+
+.card{
+    margin-left: 120px;
+    margin-bottom: 20px;
 }
