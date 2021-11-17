@@ -2,6 +2,7 @@ import numpy as np
 import time
 from DFS import *
 from backtracking import *
+from genetic import *
 from random import randint
 
 class Sudoku:
@@ -22,7 +23,10 @@ class Sudoku:
         return resolve_backtracking(self.sudoku)
 
     def genetic(self):
-        raise NameError('Error in sudoku resolution')
+        g = Genetic()
+        g.load(self.sudoku)
+        return g.solve()
+        
 
 if __name__ == "__main__":
     # Entrada esperada

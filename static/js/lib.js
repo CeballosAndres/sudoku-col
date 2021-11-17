@@ -44,13 +44,14 @@ function fill_from_string(sudoku){
 };
 
 // Genera nuevas tarjetas para el historico
-function push_historical_data(algorithm, time_to_resolve, sudoku){
+function push_historical_data(algorithm, sudoku, time_to_resolve, generation){
   date = new Date();
   $("#history-content").prepend([
     $('<div class="card" style="width: 18rem;"><div class="card-body"></div></div>').append([
         $('<h5>'+date.toLocaleDateString() + " " + date.toLocaleTimeString()+'</h5>'),
         $('<p><b>Algoritmo </b>'+ algorithm + '</p>'),
-        $('<p><b>Tiempo </b>'+ time_to_resolve.toFixed(5) + ' segundos</p>'),
+        $('<p><b>Tiempo </b>'+ time_to_resolve.toFixed(5) + ' segundos</p>'+
+          (generation != null ? '<p><b>Generación </b>'+generation+'</p>' : '')),
         $('<a href="#" class="btn btn-primary" onclick="fill_from_string(\''+ sudoku +'\')">Cargar Sudoku</a>'),
     ]),
   ]); 
@@ -77,7 +78,7 @@ function resolve() {
             alert(data.type);
           } else {
             fill(data.body);
-            push_historical_data(sudoku_algorithm, data.time, sudoku_input);
+            push_historical_data(sudoku_algorithm, sudoku_input, data.time, data.generation);
             $('#history').css('visibility', 'visible');
           }
    });
