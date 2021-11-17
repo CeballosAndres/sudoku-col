@@ -35,6 +35,28 @@ function fill(sudoku_array){
   }
 };
 
+// Método auxiliar para rellenar la matriz con un string
+function fill_from_string(sudoku){
+  sudoku_array = sudoku.split(',');
+  alert(sudoku);
+  for(let i = 0; i <= 81; i++){
+      $("#cell-"+ i ).val(sudoku_array[i]);
+  }
+};
+
+// Genera nuevas tarjetas para el historico
+function push_historical_data(algorithm, time_to_resolve, sudoku){
+  date = new Date();
+  $("#history-content").prepend([
+    $('<div class="card" style="width: 18rem;"><div class="card-body"></div></div>').append([
+        $('<h5>'+date.toLocaleDateString() + " " + date.toLocaleTimeString()+'</h5>'),
+        $('<p><b>Algoritmo </b>'+ algorithm + '</p>'),
+        $('<p><b>Tiempo </b>'+ time_to_resolve.toFixed(5) + ' segundos</p>'),
+        $('<a href="#" class="btn btn-primary" onclick="fill_from_string(\''+ sudoku +'\')">Cargar Sudoku</a>'),
+    ]),
+  ]); 
+}
+
 
 // Inicia una llamada ajax, enviando el algoritmo seleccionado así como un
 // string de los valores ingresados por el usuario: "1,2,3,6,4,,,,,5,3,4"
@@ -56,7 +78,8 @@ function resolve() {
             alert(data.type);
           } else {
             fill(data.body);
-            alert("Tiempo empleado: " + data.time + " segundos.");
+            push_historical_data(sudoku_algorithm, data.time, sudoku_input);
+            $('#history').css('visibility', 'visible');
           }
    });
   } else {
