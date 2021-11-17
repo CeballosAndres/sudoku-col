@@ -21,7 +21,7 @@ def resolve():
     generation = None
     # Obtener nombre del algoritmo a resolver
     sudoku_algorithm = request.form['sudoku_algorithm']
-    if sudoku_algorithm not in ['profundidad', 'backtracking','genetico']:
+    if sudoku_algorithm not in ['profundidad', 'backtracking','genético']:
         return jsonify({'status': 'error', 'type': 'Algoritmo no seleccionado'})
     # Obtener entrada de sudoku: "1,2,3,4,5,6,7,..."
     sudoku_input = request.form['sudoku_input']
@@ -35,7 +35,7 @@ def resolve():
             response = sudoku.dfs()
         elif sudoku_algorithm == 'backtracking':
             response = sudoku.backtracking()
-        elif sudoku_algorithm == 'genetico':
+        elif sudoku_algorithm == 'genético':
             genetic_elements = sudoku.genetic()
             response = genetic_elements[0]
             generation = genetic_elements[1]
