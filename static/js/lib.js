@@ -38,7 +38,6 @@ function fill(sudoku_array){
 // Método auxiliar para rellenar la matriz con un string
 function fill_from_string(sudoku){
   sudoku_array = sudoku.split(',');
-  alert(sudoku);
   for(let i = 0; i <= 81; i++){
       $("#cell-"+ i ).val(sudoku_array[i]);
   }
